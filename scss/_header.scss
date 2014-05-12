@@ -1,0 +1,7 @@
+.body--header {
+	text-align: center;
+}
+
+	.header--title {
+		@include rem-px('margin-bottom', 1rem);
+	}

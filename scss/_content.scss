@@ -1,0 +1,56 @@
+.main--section {
+	margin-top: 3em;
+}
+
+@media only screen and (min-width: #{$smallTabletBreakpoint}) {
+	.main--section {
+		@include flexbox();
+		@include flexbox-justify-content(space-between);
+		@include flexbox-align-items(flex-start);
+
+		&.reverse {
+			.section--content {
+				@include flexbox-order(2);
+			}
+
+			.section--graphic {
+				@include flexbox-order(1);
+			}
+		}
+	}
+
+		.section--content {
+			@include grid-column(4, 100%, 12);
+		}
+
+		.section--graphic {
+			@include grid-column(7, 100%, 12);
+			text-align: center;
+		}
+
+    //Both because all flexbox mixins except flexbox-wrap() work in all flexboxlegacy browsers.
+	.no-flexbox.no-flexboxlegacy {
+		.main--section {
+			display: block;
+			@include clearfix();
+
+			&.reverse {
+				.section--content {
+					float: right;
+				}
+
+				.section--graphic {
+					float: left;
+				}
+			}
+		}
+
+			.section--content {
+				float: left;
+			}
+
+			.section--graphic {
+				float: right;
+			}
+	}
+}

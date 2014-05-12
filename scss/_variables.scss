@@ -1,0 +1,137 @@
+// ---- ---- ---- ---- VARIABLES ---- ---- ---- ----
+
+// Site Colors
+$siteRed: red;
+$siteBlue: blue;
+$textColor: #333333;
+$siteLightGrey: #cccccc;
+
+$largeMobileBreakpoint: 29.5em; 	// <472px
+$smallTabletBreakpoint: 36.5em; 	// <592px
+$tabletBreakpoint: 47.5em;			// <768px
+$desktopBreakpoint: 63em;			// <1024px
+$widescreenBreakpoint: 79.5em;		// <1280px
+$superWideBreakpoint: 112.5em;		// < 1808px
+
+// Greys
+$black: rgb(0,0,0); //#000000
+$darkerGrey: lighten($black, 10%);
+$darkGrey: lighten($black, 25%); //#404040
+$midGrey: lighten($black, 50%); //#808080
+$lightGrey: lighten($black, 75%); //#bfbfbf
+$lighterGrey: lighten($black, 90%); //#e6e6e6
+$white: rgb(255,255,255); //#ffffff
+
+// Root
+$bodyColor: white;
+$textColor: $textColor;
+$columnMargin: .5em;
+$gutter: 1em;
+$warningColor: red;
+$textFontSize: 1em;
+
+// Typography
+$baseFont: 'Open Sans', sans-serif;
+$baseFontSize: 100%;
+$baselineHeight: 1.35em;
+$baseFontWeight: 300;
+$headingFont: $baseFont;
+$headingLineHeight: 1.1;
+
+$h1Color: $textColor;
+$h1Size: 1.875em;
+$h1FontWeight: 300;
+
+$h2Color: $textColor;
+$h2Size: 1.5em;
+$h2FontWeight: 300;
+
+$h3Color: $textColor;
+$h3Size: 1.375em;
+$h3FontWeight: 300;
+
+$h4Color: $textColor;
+$h4Size: 1.25em;
+$h4FontWeight: 300;
+
+$h5Color: $textColor;
+$h5Size: 1.125em;
+$h5FontWeight: 300;
+
+$h6Color: $textColor;
+$h6Size: 1em;
+$h6FontWeight: 300;
+
+$headingTextShadow: none;
+$codeFont: 'Source Code Pro', monospace;
+
+// Links
+$linkColor: $siteBlue;
+$linkHover: darken($linkColor,5%);
+$linkVisited: darken($linkColor,10%);
+$linkFocus: darken($linkColor,15%);
+$linkWeight: bold;
+
+// Forms
+$textboxBackground: #e2e2e2;
+$textboxBorderColor: #e2e2e2;
+$textboxBorderColorActive: $siteRed;
+$textboxBorderWidth: 1px;
+$textboxBorderStyle: solid;
+$textboxColor: $textColor;
+$textboxPlaceholderColor: $midGrey;
+$textboxPlaceholderSize: .875em;
+$textboxPlaceholderStyle: normal; //Change to italic if you want placeholder text to be italic.
+$textboxPadding: .375em 1.5em;
+$textboxOutline: none;
+$textboxMaxWidth: 30em;
+
+$labelFontSize: 1.125em;
+$labelColor: $textColor;
+
+$buttonBackground: white;
+//$buttonBackground2: $siteLightGreen; //Uncomment if you want a gradient background on a button. Also uncomment gradient in
+$buttonBorderColor: $textColor;
+$buttonBorderWidth: .25em;
+$buttonBorderStyle: solid;
+$buttonColor: $textColor;
+$buttonOutlineColor: none;
+$buttonFont: $baseFont;
+$buttonFontSize: .875em;
+$buttonFontWeight: 600;
+$buttonPadding: .5em 1.5em;
+
+$buttonAltBackground: $textColor;
+//$buttonAltBackground2: $siteLightGrey;
+
+// Tables
+$tableBackground: transparent;
+$tableCellPadding: .25em;
+$tableStripe: $siteLightGrey;
+$tableFontSize: .875em;
+$tableLineHeight: 1.4em;
+$tableBorderWidth: 1px;
+$tableBorderStyle: solid;
+$tableBorderColor: $siteLightGrey;
+$tableHover: transparent;
+
+// Blockquotes
+$blockquoteMarginBottom: .875rem;
+$blockquotePaddingLeft: 0;
+$blockquoteBorderWidth: 0;
+$blockquoteBorderStyle: solid;
+$blockquoteBorderColor: $siteLightGrey;
+$blockquoteColor: $midGrey;
+$blockquoteFontFamily: $headingFont;
+$blockquoteFontSize: 1.25rem;
+$blockquoteFontStyle: italic;
+$blockquoteFontWeight: 200;
+
+// Code/Pre blocks
+$codeMargin: 1em 0;
+$codePadding: $gutter / 2;
+$codeBackground: white;
+$codeBorder: 0;
+$codeFontFamily: $codeFont;
+$codeFontSize: .875em;
+$codeColor: $textColor;
