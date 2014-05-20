@@ -2,55 +2,55 @@
 	margin-top: 3em;
 }
 
+    .section--header {
+        background: rgba(0,0,0,.2);
+        margin-bottom: 1rem;
+        padding: .5rem 0;
+        text-align: center;
+
+        h1 {
+            margin-bottom: 0;
+        }
+    }
+
+    .section--content {
+        padding: 0 1em;
+        margin-bottom: 3em;
+    }
+
+        .section--graphic {
+            text-align: center;
+        }
+
 @media only screen and (min-width: #{$smallTabletBreakpoint}) {
-	.main--section {
+	.body--main {
 		@include flexbox();
 		@include flexbox-justify-content(space-between);
 		@include flexbox-align-items(flex-start);
-
-		&.reverse {
-			.section--content {
-				@include flexbox-order(2);
-			}
-
-			.section--graphic {
-				@include flexbox-order(1);
-			}
-		}
+		@include flexbox-flex-wrap(wrap);
+        padding: 1em;
 	}
 
-		.section--content {
-			@include grid-column(4, 100%, 12);
-		}
+        .main--section {
+            @include css3-calc('width', '25% - .75em');
+        }
 
-		.section--graphic {
-			@include grid-column(7, 100%, 12);
-			text-align: center;
-		}
+        .main--section_full {
+            width: 100%;
+        }
 
-    //Both because all flexbox mixins except flexbox-wrap() work in all flexboxlegacy browsers.
-	.no-flexbox.no-flexboxlegacy {
+            .section--content {
+                padding: 0;
+            }
+
+    // Use both .no-flexbox.no-flexboxlegacy if you're not using flexbox-wrap, because all flexbox mixins except flexbox-wrap() work in all flexboxlegacy browsers.
+	// In 3 months, all supported versions of browsers will support flexbox-wrap
+	// We also fallback to no-flexbox for IE9 because it's easy.
+	.no-flexbox {
 		.main--section {
 			display: block;
 			@include clearfix();
-
-			&.reverse {
-				.section--content {
-					float: right;
-				}
-
-				.section--graphic {
-					float: left;
-				}
-			}
 		}
-
-			.section--content {
-				float: left;
-			}
-
-			.section--graphic {
-				float: right;
-			}
 	}
+
 }

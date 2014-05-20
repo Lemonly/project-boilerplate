@@ -1,0 +1,36 @@
+.sources {
+	position: absolute;
+	top: 100%;
+	width: 100%;
+	padding: 1em;
+	background: white;
+
+	&.active {
+		top: auto;
+		bottom: 0;
+	}
+
+	ul {
+		margin-bottom: 0;
+	}
+}
+
+	.sources--tab {
+		position: absolute;
+		left: .5em;
+		bottom: 100%;
+		padding: .5em;
+		padding-bottom: .125em;
+		background: white;
+		border: 1px solid $siteLightGrey;
+		border-bottom: 0;
+
+		&:hover,
+		&:active,
+		&:focus,
+		&:visited {
+			color: $linkColor;
+			border: 1px solid $siteLightGrey;
+			border-bottom: 0;
+		}
+	}

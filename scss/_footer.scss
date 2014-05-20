@@ -1,0 +1,21 @@
+.body--footer {
+	position: relative;
+	padding: 1em;
+    text-align: center;
+}
+
+    .footer--logo {
+        max-width: 25rem;
+        font-size: .75em;
+        @include center-block();
+
+        img {
+            max-width: 15rem;
+        }
+    }
+
+
+
+@media only screen and (min-width: #{$smallTabletBreakpoint}) {
+
+}
