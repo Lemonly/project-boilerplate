@@ -3,7 +3,6 @@
 // Site Colors
 $siteRed: red;
 $siteBlue: blue;
-$textColor: #333333;
 $siteLightGrey: #cccccc;
 
 $largeMobileBreakpoint: 29.5em; 	// <472px
@@ -24,7 +23,7 @@ $white: rgb(255,255,255); //#ffffff
 
 // Root
 $bodyColor: white;
-$textColor: $textColor;
+$textColor: #333333;
 $columnMargin: .5em;
 $gutter: 1em;
 $warningColor: red;
