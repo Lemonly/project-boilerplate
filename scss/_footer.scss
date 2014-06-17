@@ -1,21 +1,15 @@
 .body--footer {
 	position: relative;
-	padding: 1em;
-    text-align: center;
+    padding: 1em 0 0 0;
+    @include clearfix();
 }
-
-    .footer--logo {
-        max-width: 25rem;
-        font-size: .75em;
-        @include center-block();
-
-        img {
-            max-width: 15rem;
-        }
-    }
 
 
 
 @media only screen and (min-width: #{$smallTabletBreakpoint}) {
-
+    .footer--logo {
+        float: right;
+        width: 15rem;
+        font-size: .75em;
+    }
 }

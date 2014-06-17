@@ -73,9 +73,11 @@
                 Marriott International is a leading lodging company with more than 3,700 properties in 74 countries and territories across 17 brands worldwide.
             </div>
         </section>
-        <aside class="sources" id="sources">
-            <a class="sources--tab" id="sourcesTab">Sources</a>
-            <ol>
+        <aside class="sources share-active" id="sources">
+            <nav class="sources--nav">
+                <a id="shareToggle">Share</a><a id="sourcesToggle">Sources</a>
+            </nav>
+            <ol class="sources--list">
                 <li>
                     <a href="http://google.com">Google</a>
                 </li>
@@ -95,6 +97,18 @@
                     <a href="http://linkedin.com">LinkedIn</a>
                 </li>
             </ol>
+            <section class="share--list">
+                <section class="embed-code-wrapper" id="embedCodeWrapper">
+                    Embed it on your webpage<br>
+                    <textarea class="embed-code" id="embedCode" disabled><div id="lemonlyIGWrapper"><div id="lemonlyIG--full-screen-link"><a href="http://www.travel.marriott.com/washington-dc/travel-and-transportation" target="_blank">View this full screen</a></div><div id="lemonlyIG"><iframe src="http://www.travel.marriott.com/washington-dc/travel-and-transportation" frameborder="0"></iframe><link href="http://www.travel.marriott.com/washington-dc/travel-and-transportation/css/iframe.css" rel="stylesheet" /></div></div></textarea>
+                    <a id="staticEmbed">Having trouble with the embed code?</a>
+                </section>
+                <section class="embed-code-wrapper static-embed" id="staticEmbedCodeWrapper">
+                    Embed a static version<br>
+                    <textarea class="embed-code" id="staticEmbedCode" disabled><a target="_blank" href="http://www.travel.marriott.com/washington-dc/travel-and-transportation"><img src="http://www.travel.marriott.com/washington-dc/travel-and-transportation/img/dc-metro-survival-guide.jpg" alt="DC Metro Survival Guide" /></a></textarea>
+                    <a id="interactiveEmbed">Want to embed the interactive version?</a>
+                </section>
+            </section>
         </aside>
     </footer>
 </div>

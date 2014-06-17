@@ -1,18 +1,36 @@
 .sources {
-	position: absolute;
-	top: 100%;
-	width: 100%;
-	padding: 1em;
-	background: white;
+    clear: both;
+    position: relative;
+    width: 100%;
+    margin-top: 4em;
+    padding: 1em;
+    background: $darkGrey;
+    text-align: left;
 
 	&.active {
 		top: auto;
 		bottom: 0;
 	}
 
-	ul {
+	ol {
 		margin-bottom: 0;
+        padding: 0;
 	}
+
+    li {
+        padding-left: 0;
+    }
+
+    a {
+        color: $linkColor;
+
+        &:hover,
+        &:active,
+        &:focus,
+        &:visited {
+            color: $linkColor;
+        }
+    }
 }
 
 	.sources--tab {
@@ -34,3 +52,125 @@
 			border-bottom: 0;
 		}
 	}
+
+.share-active {
+    #sourcesToggle {
+        opacity: .5;
+    }
+
+    .share--list {
+        display: block;
+    }
+}
+
+.sources-active {
+    #shareToggle {
+        opacity: .5;
+    }
+
+    .sources--list {
+        display: block;
+    }
+}
+
+.sources--list,
+.share--list {
+    display: none;
+}
+
+.sources--nav {
+    position: absolute;
+    left: 1em;
+    bottom: 100%;
+
+    a {
+        display: inline-block;
+        position: relative;
+        padding: .25em 1em;
+        background: $darkGrey;
+        border: 0;
+        color: white;
+        font-size: .875em;
+
+        &:first-child {
+            margin-right: 1em;
+        }
+
+        &:hover,
+        &:active,
+        &:focus,
+        &:visited {
+            color: white;
+            border: 0;
+            text-decoration: none;
+        }
+    }
+}
+
+.csstransforms {
+    .sources--nav a {
+        &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            right: -1.8em;
+            top: 10px;
+            border-top: 1.375em solid $darkGrey;
+            border-left: 1.375em solid transparent;
+            border-right: 1.375em solid transparent;
+            @include transform-rotate(45);
+        }
+    }
+}
+
+.share-options {
+    padding: 1em 0;
+
+    a {
+        display: inline-block;
+        height: 46px;
+        width: 46px;
+        margin-right: .75em;
+        background: url(../img/share-icons.png) no-repeat left top / auto 46px;
+    }
+
+    .twitter {
+        background-position: -72px 0;
+    }
+
+    .gplus {
+        background-position: -144px 0;
+    }
+
+    .email {
+        background-position: -216px 0;
+    }
+}
+
+.embed-code-wrapper {
+    font-family: $baseFont;
+    color: white;
+}
+
+.embed-code-wrapper a {
+    font-family: $baseFont;
+    font-size: .875em;
+}
+
+.embed-code {
+    max-width: 500px;
+    background: $lighterGrey;
+    color: $darkerGrey;
+    font-family: sans-serif;
+    opacity: 1 !important;
+    cursor: default !important;
+    @include box-shadow(none);
+    @include rounded(.25em);
+    border: 2px solid $lighterGrey;
+    font-size: .75em;
+    margin: .5rem 0;
+}
+
+.static-embed {
+    display: none;
+}
