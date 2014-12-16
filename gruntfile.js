@@ -50,6 +50,17 @@ module.exports = function(grunt) {
                     'css/styles.min.css': 'css/styles.css'
                 }
             }
+        },
+        connect: {
+            server: {
+                options: {
+                    port: 8888,
+                    hostname: '*',
+                    //keepalive: true,
+                    livereload: true,
+                    open: true
+                }
+            }
         }
     });
 
@@ -58,6 +69,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-connect');
 
-    grunt.registerTask('default', ['sass']);
+    grunt.registerTask('server', [
+        'connect:server',
+        'watch'
+    ]);
 };
