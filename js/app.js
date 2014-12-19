@@ -55,41 +55,43 @@ function getById(id) {
 /*
  *  Code for opening and closing sources drawer at the bottom of the page
  */
-getById('sourcesToggle').listen('click', toggleSources);
-getById('shareToggle').listen('click', toggleShare);
-getById('staticEmbed').listen('click', showStatic);
-getById('interactiveEmbed').listen('click', showInteractive);
+(function() {
+    getById('sourcesToggle').listen('click', toggleSources);
+    getById('shareToggle').listen('click', toggleShare);
+    getById('staticEmbed').listen('click', showStatic);
+    getById('interactiveEmbed').listen('click', showInteractive);
 
-function toggleSources() {
-    getById('sources').removeClass('share-active');
-    getById('sources').toggleClass('sources-active');
-}
+    function toggleSources() {
+        getById('sources').removeClass('share-active');
+        getById('sources').toggleClass('sources-active');
+    }
 
-function toggleShare() {
-    getById('sources').removeClass('sources-active');
-    getById('sources').toggleClass('share-active');
+    function toggleShare() {
+        getById('sources').removeClass('sources-active');
+        getById('sources').toggleClass('share-active');
+
+        var embedCode = document.getElementById('embedCode');
+        embedCode.style.height = (embedCode.scrollHeight + 2) + 'px';
+    }
+
+    function showStatic() {
+        document.getElementById('embedCodeWrapper').style.display = 'none';
+        document.getElementById('staticEmbedCodeWrapper').style.display = 'block';
+
+        var embedCode = document.getElementById('staticEmbedCode');
+        embedCode.style.height = (embedCode.scrollHeight + 2) + 'px';
+    }
+
+    function showInteractive() {
+        document.getElementById('embedCodeWrapper').style.display = 'block';
+        document.getElementById('staticEmbedCodeWrapper').style.display = 'none';
+
+        var embedCode = document.getElementById('embedCode');
+        embedCode.style.height = (embedCode.scrollHeight + 2) + 'px';
+    }
 
     var embedCode = document.getElementById('embedCode');
     embedCode.style.height = (embedCode.scrollHeight + 2) + 'px';
-}
-
-function showStatic() {
-    document.getElementById('embedCodeWrapper').style.display = 'none';
-    document.getElementById('staticEmbedCodeWrapper').style.display = 'block';
-
-    var embedCode = document.getElementById('staticEmbedCode');
-    embedCode.style.height = (embedCode.scrollHeight + 2) + 'px';
-}
-
-function showInteractive() {
-    document.getElementById('embedCodeWrapper').style.display = 'block';
-    document.getElementById('staticEmbedCodeWrapper').style.display = 'none';
-
-    var embedCode = document.getElementById('embedCode');
-    embedCode.style.height = (embedCode.scrollHeight + 2) + 'px';
-}
-
-var embedCode = document.getElementById('embedCode');
-embedCode.style.height = (embedCode.scrollHeight + 2) + 'px';
+})();
 
 

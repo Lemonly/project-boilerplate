@@ -6,21 +6,17 @@
     padding: 1em;
     background: $darkGrey;
     text-align: left;
-
 	&.active {
 		top: auto;
 		bottom: 0;
 	}
-
 	ol {
 		margin-bottom: 0;
         padding: 0;
 	}
-
     li {
         padding-left: 0;
     }
-
     a {
         color: $linkColor;
 
@@ -42,7 +38,6 @@
 		background: white;
 		border: 1px solid $siteLightGrey;
 		border-bottom: 0;
-
 		&:hover,
 		&:active,
 		&:focus,
@@ -82,7 +77,6 @@
     position: absolute;
     left: 1em;
     bottom: 100%;
-
     a {
         display: inline-block;
         position: relative;
@@ -91,11 +85,9 @@
         border: 0;
         color: white;
         font-size: .875em;
-
         &:first-child {
             margin-right: 1em;
         }
-
         &:hover,
         &:active,
         &:focus,
@@ -113,7 +105,7 @@
             content: '';
             display: block;
             position: absolute;
-            right: -1.8em;
+            right: -1.75em;
             top: 10px;
             border-top: 1.375em solid $darkGrey;
             border-left: 1.375em solid transparent;
@@ -125,7 +117,6 @@
 
 .share-options {
     padding: 1em 0;
-
     a {
         display: inline-block;
         height: 46px;
@@ -133,18 +124,9 @@
         margin-right: .75em;
         background: url(../img/share-icons.png) no-repeat left top / auto 46px;
     }
-
-    .twitter {
-        background-position: -72px 0;
-    }
-
-    .gplus {
-        background-position: -144px 0;
-    }
-
-    .email {
-        background-position: -216px 0;
-    }
+    .twitter { background-position: -75px 0; }
+    .gplus { background-position: -151px 0; }
+    .email { background-position: -226px 0; }
 }
 
 .embed-code-wrapper {

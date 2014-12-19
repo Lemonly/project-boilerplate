@@ -2,6 +2,6 @@
 	text-align: center;
 }
 
-	.header--title {
-		@include rem-px('margin-bottom', 1rem);
-	}
+.header--title {
+    @include rem-px('margin-bottom', 1rem);
+}
