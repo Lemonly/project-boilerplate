@@ -11,30 +11,11 @@ module.exports = function(grunt) {
         watch: {
             livereload: {
                 options: { livereload: true },
-                files: ['css/*.css', 'js/app.js', 'index.html']
+                files: ['css/*.css', 'js/*.js', 'index.html']
             },
             sass: {
                 files: 'scss/*.scss',
                 tasks: ['sass']
-            }
-        },
-        imagemin: {
-            png: {
-                options: {
-                    optimizationLevel: 7
-                },
-                files: [
-                    {
-                        // Set to true to enable the following options…
-                        expand: true,
-                        // cwd is 'current working directory'
-                        cwd: 'img/',
-                        src: ['**/*.png'],
-                        // Could also match cwd line above. i.e. project-directory/img/
-                        dest: 'img/compressed/',
-                        ext: '.png'
-                    }
-                ]
             }
         },
         uglify: {
@@ -56,7 +37,6 @@ module.exports = function(grunt) {
                 options: {
                     port: 8888,
                     hostname: '*',
-                    //keepalive: true,
                     livereload: true,
                     open: true
                 }
