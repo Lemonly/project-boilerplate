@@ -27,6 +27,15 @@ module.exports = function(grunt) {
                     open: true,
                     base: 'dev'
                 }
+            },
+            buildTest: {
+                options: {
+                    port: 8888,
+                    hosthame: '*',
+                    open: true,
+                    base: 'build',
+                    keepalive: true
+                }
             }
         },
         copy: {
@@ -50,7 +59,7 @@ module.exports = function(grunt) {
         },
         concat: {
             build: {
-                src: ['build/js/app.js'],
+                src: ['build/js/*.js'],
                 dest: 'build/js/concat.js'
             }
         },
@@ -150,7 +159,12 @@ module.exports = function(grunt) {
         'watch'
     ]);
 
+    grunt.registerTask('buildTest', [
+        'connect:buildTest'
+    ]);
+
     grunt.registerTask('build', [
+        'sass',
         'clean:build',
         'copy',
         'cssmin',
