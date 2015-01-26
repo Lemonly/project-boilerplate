@@ -116,6 +116,19 @@ module.exports = function(grunt) {
                     src: ['build/index.html']
                 }]
             }
+        },
+        compress: {
+            build: {
+                options: {
+                    archive: 'build.' + dateHash() + '.zip'
+                },
+                files: [
+                    {
+                        src: ['build/**'],
+                        dest: '/'
+                    }
+                ]
+            }
         }
     });
 
@@ -129,6 +142,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-text-replace');
     grunt.loadNpmTasks('grunt-cache-bust');
+    grunt.loadNpmTasks('grunt-contrib-compress');
 
     grunt.registerTask('server', [
         'connect:server',
@@ -144,6 +158,26 @@ module.exports = function(grunt) {
         'clean:cleanup',
         'replace',
         'cacheBust',
-        'clean:afterCacheBust'
+        'clean:afterCacheBust',
+        'compress'
     ]);
 };
+
+//for zip creation
+var dateHash = function() {
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+
+    if(dd<10) {
+        dd='0'+dd
+    }
+
+    if(mm<10) {
+        mm='0'+mm
+    }
+
+    var date = yyyy + '-' + mm + '-' + dd + '.' + today.getTime();
+    return date;
+}
