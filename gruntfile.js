@@ -16,6 +16,10 @@ module.exports = function(grunt) {
             sass: {
                 files: 'dev/scss/*.scss',
                 tasks: ['sass']
+            },
+            scripts: {
+                files: 'dev/js/app/*.js',
+                tasks: 'concat:watch'
             }
         },
         connect: {
@@ -59,14 +63,18 @@ module.exports = function(grunt) {
         },
         concat: {
             build: {
-                src: ['build/js/*.js'],
-                dest: 'build/js/concat.js'
+                src: ['build/js/app/*.js'],
+                dest: 'build/js/app/concat.js'
+            },
+            watch: {
+                src: ['dev/js/app/*.js'],
+                dest: 'dev/js/app.js'
             }
         },
         uglify: {
             my_target: {
                 files: {
-                    'build/js/app.min.js': 'build/js/concat.js'
+                    'build/js/app.min.js': 'build/js/app/concat.js'
                 }
             }
         },
@@ -75,6 +83,7 @@ module.exports = function(grunt) {
             cleanup: [
                 'build/js/*.js',
                 '!build/js/*.min.js',
+                'build/js/app',
                 'build/css/styles.css',
                 'build/css/*.map',
                 'build/img/uncompressed',
