@@ -164,6 +164,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-compress');
 
     grunt.registerTask('server', [
+        'sass',
         'connect:server',
         'watch'
     ]);
