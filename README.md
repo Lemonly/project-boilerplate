@@ -12,5 +12,5 @@
 * Refine the variables used for base styles.
 * Refine build task so text replacement is no longer needed for cache-busting.
 * Local branch changes:
-    * Added a (Babel)[https://babeljs.io/] grunt task for ES6 support
+    * Added a [Babel](https://babeljs.io/) grunt task for ES6 support
     * Changed app.js to app.es6
