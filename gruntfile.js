@@ -86,7 +86,7 @@ module.exports = function(grunt) {
             },
             assets: {
                 files: [{
-                    src: ['dev/*.html'],
+                    src: ['build/*.html'],
                     dest: 'build/'
                 }]
             }
