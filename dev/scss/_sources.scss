@@ -36,14 +36,14 @@
 		padding: .5em;
 		padding-bottom: .125em;
 		background: white;
-		border: 1px solid $siteLightGrey;
+		border: 1px solid $lighterGrey;
 		border-bottom: 0;
 		&:hover,
 		&:active,
 		&:focus,
 		&:visited {
 			color: $linkColor;
-			border: 1px solid $siteLightGrey;
+			border: 1px solid $lighterGrey;
 			border-bottom: 0;
 		}
 	}
