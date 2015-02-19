@@ -1,43 +1,62 @@
 module.exports = function(grunt) {
-    grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
+grunt.initConfig({
+    pkg: grunt.file.readJSON('package.json'),
+    sass: {
+        dist: {
+            files: {
+                "dev/css/styles.css": "dev/scss/styles.scss"
+            }
+        }
+    },
+    babel: {
+        options: {
+            sourceMap: true
+        },
+        //TODO: Get this to save file on refresh. Github issue filed: https://github.com/babel/grunt-babel/issues/19
+        dist: {
+            files: [{
+                expand: true,
+                cwd: 'dev/js/site',
+                src: ['**/*.es6'],
+                dest: 'dev/js/site',
+                ext: '.js'
+            }]
+        }
+    },
+    watch: {
+        livereload: {
+            options: { livereload: true },
+            files: ['dev/css/*.css', 'dev/js/site/*.js', 'dev/**/*.html']
+        },
         sass: {
-            dist: {
-                files: {
-                    "dev/css/styles.css": "dev/scss/styles.scss"
-                }
+            files: 'dev/scss/*.scss',
+            tasks: ['sass']
+        },
+        babel: {
+            files: 'dev/js/site/*.es6',
+            tasks: ['babel']
+        }
+    },
+    connect: {
+        server: {
+            options: {
+                port: 8888,
+                hostname: '*',
+                livereload: true,
+                open: true,
+                base: 'dev'
             }
         },
-        watch: {
-            livereload: {
-                options: { livereload: true },
-                files: ['dev/css/*.css', 'dev/js/site/*.js', 'dev/**/*.html']
-            },
-            sass: {
-                files: 'dev/scss/*.scss',
-                tasks: ['sass']
+        buildTest: {
+            options: {
+                port: 8888,
+                hosthame: '*',
+                open: true,
+                base: 'build',
+                keepalive: true
             }
-        },
-        connect: {
-            server: {
-                options: {
-                    port: 8888,
-                    hostname: '*',
-                    livereload: true,
-                    open: true,
-                    base: 'dev'
-                }
-            },
-            buildTest: {
-                options: {
-                    port: 8888,
-                    hosthame: '*',
-                    open: true,
-                    base: 'build',
-                    keepalive: true
-                }
-            }
-        },
+        }
+    },
         copy: {
             main: {
                 files: [
@@ -108,6 +127,7 @@ module.exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-babel');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
@@ -116,11 +136,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-cache-bust');
     grunt.loadNpmTasks('grunt-contrib-compress');
 
-    grunt.registerTask('server', [
-        'sass',
-        'connect:server',
-        'watch'
-    ]);
+grunt.registerTask('server', [
+    'sass',
+    'babel',
+    'connect:server',
+    'watch'
+]);
 
     grunt.registerTask('buildTest', [
         'connect:buildTest'

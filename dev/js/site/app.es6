@@ -95,4 +95,7 @@ function getById(id) {
     embedCode.style.height = (embedCode.scrollHeight + 2) + 'px';
 })();
 
+console.log('');
 
+let x = 2;
+const y = 5;
