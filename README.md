@@ -2,9 +2,9 @@
 #####v1.0
 
 ###Based on these projects:
-* (HTML5 Boilerplate)[https://html5boilerplate.com/]
-* (Abessive Theme)[https://github.com/joshbroton/abessive]
-* (Sassquatch)[https://github.com/joshbroton/sassquatch]
+* [HTML5 Boilerplate](https://html5boilerplate.com/)
+* [Abessive Theme](https://github.com/joshbroton/abessive)
+* [Sassquatch](https://github.com/joshbroton/sassquatch)
 * Lemonly HTML/CSS/JS Style Guides
 
 ###Changes:
