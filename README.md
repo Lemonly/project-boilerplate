@@ -11,3 +11,6 @@
 * reset-normalize.scss replaced with normalize.csss, which is based on the HTML5 Boilerplate v5.0.0 CSS normalize.
 * Refine the variables used for base styles.
 * Refine build task so text replacement is no longer needed for cache-busting.
+* Local branch changes:
+    * Added a (Babel)[https://babeljs.io/] grunt task for ES6 support
+    * Changed app.js to app.es6
