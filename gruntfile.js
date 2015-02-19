@@ -9,11 +9,7 @@ grunt.initConfig({
         }
     },
     babel: {
-        options: {
-            sourceMap: true
-        },
-        //TODO: Get this to save file on refresh. Github issue filed: https://github.com/babel/grunt-babel/issues/19
-        dist: {
+        dev: {
             files: [{
                 expand: true,
                 cwd: 'dev/js/site',
@@ -34,7 +30,7 @@ grunt.initConfig({
         },
         babel: {
             files: 'dev/js/site/*.es6',
-            tasks: ['babel']
+            tasks: ['babel:dev']
         }
     },
     connect: {

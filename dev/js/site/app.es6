@@ -94,8 +94,3 @@ function getById(id) {
     var embedCode = document.getElementById('embedCode');
     embedCode.style.height = (embedCode.scrollHeight + 2) + 'px';
 })();
-
-console.log('');
-
-let x = 2;
-const y = 5;

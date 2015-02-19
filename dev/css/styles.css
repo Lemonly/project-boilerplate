@@ -367,7 +367,7 @@ input[type="reset"] {
   height: auto;
   padding: 0.5rem 1.5rem;
   overflow: visible;
-  background-color: white;
+  background-color: #fff;
   border: 0.25rem solid gray;
   color: gray;
   font-family: "Open Sans", sans-serif;
