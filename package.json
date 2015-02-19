@@ -1,6 +1,6 @@
 {
   "name": "Lemonly-Project-Boilerplate",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "devDependencies": {
     "grunt": "~0.4.5",
     "grunt-contrib-cssmin": "~0.11.0",
