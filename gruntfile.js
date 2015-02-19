@@ -11,15 +11,11 @@ module.exports = function(grunt) {
         watch: {
             livereload: {
                 options: { livereload: true },
-                files: ['dev/css/*.css', 'dev/js/*.js', 'dev/index.html']
+                files: ['dev/css/*.css', 'dev/js/site/*.js', 'dev/**/*.html']
             },
             sass: {
                 files: 'dev/scss/*.scss',
                 tasks: ['sass']
-            },
-            scripts: {
-                files: 'dev/js/app/*.js',
-                tasks: 'concat:watch'
             }
         },
         connect: {
@@ -57,70 +53,27 @@ module.exports = function(grunt) {
         cssmin: {
             combine: {
                 files: {
-                    'build/css/styles.min.css': 'build/css/styles.css'
+                    'build/css/styles.css': 'dev/css/styles.css'
                 }
-            }
-        },
-        concat: {
-            build: {
-                src: ['build/js/app/*.js'],
-                dest: 'build/js/app/concat.js'
-            },
-            watch: {
-                src: ['dev/js/app/*.js'],
-                dest: 'dev/js/app.js'
             }
         },
         uglify: {
             my_target: {
-                files: {
-                    'build/js/app.min.js': 'build/js/app/concat.js'
-                }
+                files: [{
+                    expand: true,
+                    cwd: 'dev/js/site',
+                    src: '**/*.js',
+                    dest: 'build/js/site'
+                }]
             }
         },
         clean: {
             build: ['build'],
             cleanup: [
-                'build/js/*.js',
-                '!build/js/*.min.js',
-                'build/js/app',
-                'build/css/styles.css',
-                'build/css/*.map',
+                'build/css/*.*.map',
                 'build/img/uncompressed',
                 'build/scss'
-            ],
-            afterCacheBust: [
-                'build/js/*.min.js',
-                'build/css/*.min.css'
             ]
-        },
-        replace: {
-            sources: {
-                src: ['build/index.html'],
-                dest: 'build/index.html',
-                replacements: [{
-                    from: /\"js\/[a-z,0-9,.]*.js\"/g,
-                    to: function(matchedWord) {
-                        if(matchedWord.indexOf('.min.js') == -1) {
-                            console.log(matchedWord);
-                            return matchedWord.replace('.js', '.min.js');
-                        }
-                        return matchedWord;
-                    }
-                },{
-                    from: /\"css\/[a-z,0-9,.]*.css\"/g,
-                    to: function(matchedWord) {
-                        if(matchedWord.indexOf('.min.css') == -1) {
-                            console.log(matchedWord);
-                            return matchedWord.replace('.css', '.min.css');
-                        }
-                        return matchedWord;
-                    }
-                },{
-                    from: 'favicon.ico',
-                    to: 'favicon.' + Math.floor((Math.random()*10000000)+1) + '.ico'
-                }]
-            }
         },
         cacheBust: {
             options: {
@@ -128,11 +81,13 @@ module.exports = function(grunt) {
                 algorithm: 'md5',
                 length: 8,
                 baseDir: 'build',
+                rename: false,
                 ignorePatterns: ['img']
             },
             assets: {
                 files: [{
-                    src: ['build/index.html']
+                    src: ['dev/*.html'],
+                    dest: 'build/'
                 }]
             }
         },
@@ -157,9 +112,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-text-replace');
     grunt.loadNpmTasks('grunt-cache-bust');
     grunt.loadNpmTasks('grunt-contrib-compress');
 
@@ -178,12 +131,9 @@ module.exports = function(grunt) {
         'clean:build',
         'copy',
         'cssmin',
-        'concat',
         'uglify',
         'clean:cleanup',
-        'replace',
         'cacheBust',
-        'clean:afterCacheBust',
         'compress'
     ]);
 };
