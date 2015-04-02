@@ -1,5 +1,5 @@
 #Lemonly's Front-end Project Boilerplate
-#####v1.1.0b
+#####v1.1.0
 
 ###Getting Started:
 1. Clone project
@@ -22,3 +22,4 @@
 * Local branch changes:
     * Added a [Babel](https://babeljs.io/) grunt task for ES6 support
     * Changed app.js to app.es6
+* Reworked _footer.scss to meet style guide requirements.

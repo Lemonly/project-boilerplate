@@ -2,8 +2,8 @@
     clear: both;
     position: relative;
     width: 100%;
-    margin-top: 4em;
-    padding: 1em;
+    margin-top: 4rem;
+    padding: 1rem;
     background: $darkGrey;
     text-align: left;
 	&.active {
@@ -31,19 +31,19 @@
 
 	.sources--tab {
 		position: absolute;
-		left: .5em;
+		left: .5rem;
 		bottom: 100%;
-		padding: .5em;
-		padding-bottom: .125em;
+		padding: .5rem;
+		padding-bottom: (2rem/16);
 		background: white;
-		border: 1px solid $lighterGrey;
+		border: (1rem/16) solid $lighterGrey;
 		border-bottom: 0;
 		&:hover,
 		&:active,
 		&:focus,
 		&:visited {
 			color: $linkColor;
-			border: 1px solid $lighterGrey;
+			border: (1rem/16) solid $lighterGrey;
 			border-bottom: 0;
 		}
 	}
@@ -75,18 +75,18 @@
 
 .sources--nav {
     position: absolute;
-    left: 1em;
+    left: 1rem;
     bottom: 100%;
     a {
         display: inline-block;
         position: relative;
-        padding: .25em 1em;
+        padding: .25rem 1rem;
         background: $darkGrey;
         border: 0;
         color: white;
-        font-size: .875em;
+        font-size: (14rem/16);
         &:first-child {
-            margin-right: 1em;
+            margin-right: 1rem;
         }
         &:hover,
         &:active,
@@ -105,11 +105,11 @@
             content: '';
             display: block;
             position: absolute;
-            right: -1.75em;
-            top: 10px;
-            border-top: 1.375em solid $darkGrey;
-            border-left: 1.375em solid transparent;
-            border-right: 1.375em solid transparent;
+            right: -1.75rem;
+            top: (10rem/16);
+            border-top: (22rem/16) solid $darkGrey;
+            border-left: (22rem/16) solid transparent;
+            border-right: (22rem/16) solid transparent;
             @include transform-rotate(45);
         }
     }
@@ -119,14 +119,15 @@
     padding: 1em 0;
     a {
         display: inline-block;
-        height: 46px;
-        width: 46px;
-        margin-right: .75em;
-        background: url(../img/share-icons.png) no-repeat left top / auto 46px;
+        height: (46rem/16);
+        width: (46rem/16);
+        margin-right: .75rem;
+        background: url(../img/share-icons.png) no-repeat left top;
+        background-size: auto (46rem/16);
     }
-    .twitter { background-position: -75px 0; }
-    .gplus { background-position: -151px 0; }
-    .email { background-position: -226px 0; }
+    .twitter { background-position: (-75rem/16) 0; }
+    .gplus { background-position: (-151rem/16) 0; }
+    .email { background-position: (-226rem/16) 0; }
 }
 
 .embed-code-wrapper {
@@ -140,16 +141,17 @@
 }
 
 .embed-code {
-    max-width: 500px;
+    width: (300rem/16);
+    max-width: 100%;
     background: $lighterGrey;
     color: $darkerGrey;
     font-family: sans-serif;
     opacity: 1 !important;
     cursor: default !important;
     @include box-shadow(none);
-    @include rounded(.25em);
-    border: 2px solid $lighterGrey;
-    font-size: .75em;
+    @include rounded(.25rem);
+    border: (2rem/16) solid $lighterGrey;
+    font-size: .75rem;
     margin: .5rem 0;
 }
 
