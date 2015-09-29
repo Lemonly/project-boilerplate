@@ -70,8 +70,8 @@
 		$w3cColors: #{$w3cColors + nth($colorList, $i)};
 
 		@if $i < $max {
-			$colors: #{$colors + ", "};
-			$w3cColors: #{$w3cColors + ", "};
+			$colors: #{$colors + ', '};
+			$w3cColors: #{$w3cColors + ', '};
 		}
 	}
 

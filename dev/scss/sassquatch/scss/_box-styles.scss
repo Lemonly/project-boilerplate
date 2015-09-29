@@ -39,7 +39,7 @@
 	&:before,
 	&:after {
 		display: table;
-		content: "";
+		content: '';
 	}
 	&:after {
 		clear: both;
@@ -65,7 +65,7 @@
 // Change the opacity of an element
 // @include opacity(DECIMAL 0-1)
 @mixin opacity($opacity: .5) {
-	filter: unquote("progid:DXImageTransform.Microsoft.Alpha(Opacity=#{round($opacity * 100)})");
+	filter: unquote('progid:DXImageTransform.Microsoft.Alpha(Opacity=#{round($opacity * 100)})');
 	opacity: $opacity;
 }
 

@@ -1,4 +1,4 @@
-// Mixin for creating animations using single or "all" property transitions
+// Mixin for creating animations using single or 'all' property transitions
 // @include transition(PROPERTY DURATION DELAY(OPT) TIMING-FUNCTION)
 @mixin transition($transition) {
 	-webkit-transition: $transition;
@@ -9,7 +9,7 @@
 }
 
 // Mixin for creating animations using multiple property transitions
-// @include multi-transition("PROPERTY DURATION DELAY(OPT) TIMING-FUNCTION, PROPERTY DURATION DELAY(OPT) TIMING-FUNCTION")
+// @include multi-transition('PROPERTY DURATION DELAY(OPT) TIMING-FUNCTION, PROPERTY DURATION DELAY(OPT) TIMING-FUNCTION')
 @mixin multi-transition($transition) {
 	-webkit-transition: #{$transition};
 	-moz-transition: #{$transition};
@@ -28,7 +28,7 @@
 		$animations: #{$animations + nth($animate, $i)};
 
 		@if $i < $max {
-			$animations: #{$animations + ", "};
+			$animations: #{$animations + ', '};
 		}
 	}
 	-webkit-animation: $animations;

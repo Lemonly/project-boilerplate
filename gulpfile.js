@@ -1,22 +1,25 @@
-var gulp        = require('gulp'),
-    connect     = require('gulp-connect'),
-    open        = require('gulp-open'),
-    babel       = require('gulp-babel'),
-    sass        = require('gulp-sass'),
-    sourcemaps  = require('gulp-sourcemaps'),
-    clean       = require('gulp-clean'),
-    minifyCss   = require('gulp-minify-css'),
-    uglify      = require('gulp-uglify'),
-    rename      = require('gulp-rename'),
-    htmlreplace = require('gulp-html-replace'),
-    zip         = require('gulp-zip');
+var gulp            = require('gulp'),
+    connect         = require('gulp-connect'),
+    open            = require('gulp-open'),
+    babel           = require('gulp-babel'),
+    sass            = require('gulp-sass'),
+    autoprefixer    = require('gulp-autoprefixer'),
+    sourcemaps      = require('gulp-sourcemaps'),
+    clean           = require('gulp-clean'),
+    minifyCss       = require('gulp-minify-css'),
+    uglify          = require('gulp-uglify'),
+    rename          = require('gulp-rename'),
+    htmlreplace     = require('gulp-html-replace'),
+    zip             = require('gulp-zip'),
+    eslint          = require('gulp-eslint'),
+    scsslint        = require('gulp-scss-lint');
 
 var roots = {
     dev: './dev/',
     build: './build/'
 };
 
-gulp.task('connect', function() {
+gulp.task('connect', ['sass', 'babel'], function() {
     connect.server({
         root: roots.dev,
         livereload: true
@@ -28,40 +31,53 @@ gulp.task('html', function() {
         .pipe(connect.reload());
 });
 
-gulp.task('babel', function() {
+gulp.task('babel', ['eslint'], function() {
     gulp.src(roots.dev + 'js/**/*.es6')
         .pipe(babel())
         .pipe(gulp.dest(roots.dev + '/js'))
         .pipe(connect.reload());
 });
 
-gulp.task('sass', function() {
+gulp.task('sass', ['scsslint'], function() {
     gulp.src(roots.dev + 'scss/styles.scss')
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
+        .pipe(autoprefixer({
+            browsers: ['last 2 versions', 'ie <= 9'],
+            cascade: false
+        }))
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest(roots.dev + 'css'));
 });
+
+/*gulp.task('autoprefixer', ['sass'], function() {
+    return gulp.src(roots.dev + 'css/!*.css')
+               .pipe(autoprefixer({
+                    browsers: ['last 2 versions', 'ie <= 9'],
+                    cascade: false
+               }))
+               .pipe(gulp.dest(roots.dev + 'css'));
+});*/
 
 gulp.task('css', function() {
     gulp.src(roots.dev + 'css/*.css')
         .pipe(connect.reload());
 });
 
-gulp.task('open', function() {
+gulp.task('open', ['connect'], function() {
     gulp.src(__filename)
         .pipe(open({uri: 'http://0.0.0.0:8080'}));
 });
 
-gulp.task('watch', function() {
+gulp.task('watch', ['open'], function() {
     gulp.watch([roots.dev + '**/*.html'], ['html']);
     gulp.watch([roots.dev + 'js/**/*.es6'], ['babel']);
-    gulp.watch([roots.dev + 'scss/**/*.scss'], ['sass']);
+    gulp.watch([roots.dev + 'scss/**/*.scss'], ['sass', 'autoprefixer']);
     gulp.watch([roots.dev + 'css/**/*.css'], ['css']);
 });
 
 // Delete the build directory if it exists
-gulp.task('clean', function() {
+gulp.task('clean', ['sass', 'babel'], function() {
     return gulp.src(roots.build)
                .pipe(clean());
 });
@@ -113,9 +129,25 @@ gulp.task('zip', ['html-replace', 'clean-unminified'], function() {
                .pipe(gulp.dest('./'));
 });
 
-gulp.task('server', ['sass', 'babel', 'connect', 'open', 'watch']);
+gulp.task('eslint', function() {
+    return gulp.src(roots.dev + 'js/site/*.es6')
+               .pipe(eslint())
+               .pipe(eslint.format());
+               // If eslint happens BEFORE transpilation, and you want it to fail before,
+               // then add this line and add eslint as requirement for babel task
+               //.pipe(eslint.failOnError());
+});
 
-gulp.task('build', ['sass', 'babel', 'clean', 'build-copy', 'minify-css', 'uglify', 'html-replace', 'clean-unminified', 'zip']);
+gulp.task('scsslint', ['eslint'], function() {
+    return gulp.src(roots.dev + 'scss/*.scss')
+               .pipe(scsslint({'config': 'scss-lint-config.yml'}));
+});
+
+gulp.task('server', ['watch']);
+
+gulp.task('build', ['clean', 'build-copy', 'minify-css', 'uglify', 'html-replace', 'clean-unminified', 'zip']);
+
+gulp.task('lint', ['eslint', 'scsslint']);
 
 //for zip creation
 var dateHash = function() {
@@ -134,5 +166,5 @@ var dateHash = function() {
 
     var date = yyyy + '-' + mm + '-' + dd + '.' + today.getTime();
     return date;
-}
+};
 

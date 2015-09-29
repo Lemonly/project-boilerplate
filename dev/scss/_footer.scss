@@ -1,8 +1,8 @@
 .body--footer {
-	position: relative;
+    @include clearfix();
+    position: relative;
     padding: 0;
     padding-top: 1rem;
-    @include clearfix();
 }
 
 
