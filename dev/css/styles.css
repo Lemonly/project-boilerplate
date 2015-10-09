@@ -481,9 +481,6 @@ th {
 .header--title {
   margin-bottom: 1rem; }
 
-body {
-  background-image: linear-gradient(red, blue); }
-
 .main--section img {
   border-radius: 50%; }
 
@@ -500,11 +497,11 @@ body {
     clear: both; }
 
 .sources {
-  clear: both;
   position: relative;
   width: 100%;
   margin-top: 4rem;
   padding: 1rem;
+  clear: both;
   background: #404040;
   text-align: left; }
   .sources.active {
@@ -525,28 +522,28 @@ body {
 
 .sources--tab {
   position: absolute;
-  left: .5rem;
   bottom: 100%;
+  left: .5rem;
   padding: .5rem;
   padding-bottom: 0.125rem;
-  background: white;
   border: 0.0625rem solid #e6e6e6;
-  border-bottom: 0; }
+  border-bottom: 0;
+  background: #fff; }
   .sources--tab:hover,
   .sources--tab:active,
   .sources--tab:focus,
   .sources--tab:visited {
-    color: #00f;
     border: 0.0625rem solid #e6e6e6;
-    border-bottom: 0; }
+    border-bottom: 0;
+    color: #00f; }
 
-.share-active #sourcesToggle {
+.share-active .sources-toggle {
   opacity: .5; }
 
 .share-active .share--list {
   display: block; }
 
-.sources-active #shareToggle {
+.sources-active .share-tottle {
   opacity: .5; }
 
 .sources-active .sources--list {
@@ -558,15 +555,15 @@ body {
 
 .sources--nav {
   position: absolute;
-  left: 1rem;
-  bottom: 100%; }
+  bottom: 100%;
+  left: 1rem; }
   .sources--nav a {
     display: inline-block;
     position: relative;
     padding: 0.25rem 1rem;
-    background: #404040;
     border: 0;
-    color: white;
+    background: #404040;
+    color: #fff;
     font-size: 0.875rem; }
     .sources--nav a:first-child {
       margin-right: 1rem; }
@@ -574,29 +571,29 @@ body {
     .sources--nav a:active,
     .sources--nav a:focus,
     .sources--nav a:visited {
-      color: white;
       border: 0;
+      color: #fff;
       text-decoration: none; }
 
 .csstransforms .sources--nav a:after {
-  content: '';
-  display: block;
-  position: absolute;
-  right: -1.75rem;
-  top: 0.625rem;
-  border-top: 1.375rem solid #404040;
-  border-left: 1.375rem solid transparent;
-  border-right: 1.375rem solid transparent;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
-  transform: rotate(45deg); }
+  transform: rotate(45deg);
+  display: block;
+  position: absolute;
+  top: 0.625rem;
+  right: -1.75rem;
+  border-top: 1.375rem solid #404040;
+  border-right: 1.375rem solid transparent;
+  border-left: 1.375rem solid transparent;
+  content: ''; }
 
 .share-options {
   padding: 1em 0; }
   .share-options a {
     display: inline-block;
-    height: 2.875rem;
     width: 2.875rem;
+    height: 2.875rem;
     margin-right: .75rem;
     background: url(../img/share-icons.png) no-repeat left top;
     background-size: auto 2.875rem; }
@@ -608,27 +605,26 @@ body {
     background-position: -14.125rem 0; }
 
 .embed-code-wrapper {
-  font-family: "Open Sans", sans-serif;
-  color: white; }
-
-.embed-code-wrapper a {
-  font-family: "Open Sans", sans-serif;
-  font-size: .875em; }
+  color: #fff;
+  font-family: "Open Sans", sans-serif; }
+  .embed-code-wrapper a {
+    font-family: "Open Sans", sans-serif;
+    font-size: .875em; }
 
 .embed-code {
   width: 18.75rem;
   max-width: 100%;
+  margin: .5rem 0;
+  border: 0.125rem solid #e6e6e6;
+  border-radius: .25rem;
   background: #e6e6e6;
   color: #1a1a1a;
   font-family: sans-serif;
-  opacity: 1 !important;
-  cursor: default !important;
-  box-shadow: none;
-  border-radius: 0.25rem;
-  background-clip: padding-box;
-  border: 0.125rem solid #e6e6e6;
   font-size: .75rem;
-  margin: .5rem 0; }
+  box-shadow: none;
+  cursor: default; }
+  .embed-code[disabled] {
+    opacity: 1; }
 
 .static-embed {
   display: none; }

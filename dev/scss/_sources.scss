@@ -1,19 +1,19 @@
 .sources {
-    clear: both;
     position: relative;
     width: 100%;
     margin-top: 4rem;
     padding: 1rem;
+    clear: both;
     background: $darkGrey;
     text-align: left;
-	&.active {
-		top: auto;
-		bottom: 0;
-	}
-	ol {
-		margin-bottom: 0;
+    &.active {
+        top: auto;
+        bottom: 0;
+    }
+    ol {
+        margin-bottom: 0;
         padding: 0;
-	}
+    }
     li {
         padding-left: 0;
     }
@@ -29,27 +29,27 @@
     }
 }
 
-	.sources--tab {
-		position: absolute;
-		left: .5rem;
-		bottom: 100%;
-		padding: .5rem;
-		padding-bottom: (2rem/16);
-		background: white;
-		border: (1rem/16) solid $lighterGrey;
-		border-bottom: 0;
-		&:hover,
-		&:active,
-		&:focus,
-		&:visited {
-			color: $linkColor;
-			border: (1rem/16) solid $lighterGrey;
-			border-bottom: 0;
-		}
-	}
+.sources--tab {
+    position: absolute;
+    bottom: 100%;
+    left: .5rem;
+    padding: .5rem;
+    padding-bottom: (2rem/16);
+    border: (1rem/16) solid $lighterGrey;
+    border-bottom: 0;
+    background: $white;
+    &:hover,
+    &:active,
+    &:focus,
+    &:visited {
+        border: (1rem/16) solid $lighterGrey;
+        border-bottom: 0;
+        color: $linkColor;
+    }
+}
 
 .share-active {
-    #sourcesToggle {
+    .sources-toggle {
         opacity: .5;
     }
 
@@ -59,7 +59,7 @@
 }
 
 .sources-active {
-    #shareToggle {
+    .share-tottle {
         opacity: .5;
     }
 
@@ -75,15 +75,15 @@
 
 .sources--nav {
     position: absolute;
-    left: 1rem;
     bottom: 100%;
+    left: 1rem;
     a {
         display: inline-block;
         position: relative;
         padding: .25rem 1rem;
-        background: $darkGrey;
         border: 0;
-        color: white;
+        background: $darkGrey;
+        color: $white;
         font-size: (14rem/16);
         &:first-child {
             margin-right: 1rem;
@@ -92,8 +92,8 @@
         &:active,
         &:focus,
         &:visited {
-            color: white;
             border: 0;
+            color: $white;
             text-decoration: none;
         }
     }
@@ -102,15 +102,15 @@
 .csstransforms {
     .sources--nav a {
         &:after {
-            content: '';
+            @include transform-rotate(45);
             display: block;
             position: absolute;
-            right: -1.75rem;
             top: (10rem/16);
+            right: -1.75rem;
             border-top: (22rem/16) solid $darkGrey;
-            border-left: (22rem/16) solid transparent;
             border-right: (22rem/16) solid transparent;
-            @include transform-rotate(45);
+            border-left: (22rem/16) solid transparent;
+            content: '';
         }
     }
 }
@@ -119,8 +119,8 @@
     padding: 1em 0;
     a {
         display: inline-block;
-        height: (46rem/16);
         width: (46rem/16);
+        height: (46rem/16);
         margin-right: .75rem;
         background: url(../img/share-icons.png) no-repeat left top;
         background-size: auto (46rem/16);
@@ -131,28 +131,29 @@
 }
 
 .embed-code-wrapper {
+    color: $white;
     font-family: $baseFont;
-    color: white;
-}
-
-.embed-code-wrapper a {
-    font-family: $baseFont;
-    font-size: .875em;
+    a {
+        font-family: $baseFont;
+        font-size: .875em;
+    }
 }
 
 .embed-code {
     width: (300rem/16);
     max-width: 100%;
+    margin: .5rem 0;
+    border: (2rem/16) solid $lighterGrey;
+    border-radius: .25rem;
     background: $lighterGrey;
     color: $darkerGrey;
     font-family: sans-serif;
-    opacity: 1 !important;
-    cursor: default !important;
-    @include box-shadow(none);
-    @include rounded(.25rem);
-    border: (2rem/16) solid $lighterGrey;
     font-size: .75rem;
-    margin: .5rem 0;
+    box-shadow: none;
+    cursor: default;
+    &[disabled] {
+        opacity: 1;
+    }
 }
 
 .static-embed {

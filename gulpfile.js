@@ -72,7 +72,7 @@ gulp.task('open', ['connect'], function() {
 gulp.task('watch', ['open'], function() {
     gulp.watch([roots.dev + '**/*.html'], ['html']);
     gulp.watch([roots.dev + 'js/**/*.es6'], ['babel']);
-    gulp.watch([roots.dev + 'scss/**/*.scss'], ['sass', 'autoprefixer']);
+    gulp.watch([roots.dev + 'scss/**/*.scss'], ['sass']);
     gulp.watch([roots.dev + 'css/**/*.css'], ['css']);
 });
 

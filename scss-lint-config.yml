@@ -1,4 +1,5 @@
 exclude: 'dev/scss/sassquatch/**'
+exclude: 'dev/scss/_normalize.scss'
 
 linters:
     Indentation:
@@ -12,7 +13,8 @@ linters:
         enabled: false
 
     NameFormat:
-        convention: camel_case
+        enabled: false
+        #convention: camel_case
 
     PropertySortOrder:
         order:
@@ -167,4 +169,3 @@ linters:
 
     UrlQuotes:
         enabled: false
-
