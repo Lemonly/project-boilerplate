@@ -12,11 +12,16 @@ var gulp            = require('gulp'),
     htmlreplace     = require('gulp-html-replace'),
     zip             = require('gulp-zip'),
     eslint          = require('gulp-eslint'),
-    scsslint        = require('gulp-scss-lint');
+    scsslint        = require('gulp-scss-lint'),
+    tinypng        = require('gulp-tinypng');
 
 var roots = {
     dev: './dev/',
     build: './build/'
+};
+
+var apiKeys = {
+    tinypng: 'Ygc_fAm-kjKoO126viO0QM9OxGKClEom'
 };
 
 gulp.task('connect', ['sass', 'babel'], function() {
@@ -94,11 +99,18 @@ gulp.task('build-copy', ['clean'], function() {
     return gulp.src([
                     roots.dev + '**/*',
                     '!' + roots.dev + '{scss,scss/**}',
+                    '!' + roots.dev + '/img/**/*',
                     '!./**/*.map',
                     '!./**/*.es6'
                 ])
                .pipe(gulp.dest('build'));
 });
+
+gulp.task('tinypng', ['build-copy'], function() {
+    gulp.src(roots.dev + '/img/**/*')
+        .pipe(tinypng(apiKeys.tinypng))
+        .pipe(gulp.dest(roots.build + '/img'));
+})
 
 gulp.task('minify-css', ['build-copy'], function() {
     return gulp.src(roots.build + 'css/styles.css')
@@ -145,7 +157,7 @@ gulp.task('scsslint', ['eslint'], function() {
 
 gulp.task('server', ['watch']);
 
-gulp.task('build', ['clean', 'build-copy', 'minify-css', 'uglify', 'html-replace', 'clean-unminified', 'zip']);
+gulp.task('build', ['clean', 'build-copy', 'tinypng', 'minify-css', 'uglify', 'html-replace', 'clean-unminified', 'zip']);
 
 gulp.task('lint', ['eslint', 'scsslint']);
 
