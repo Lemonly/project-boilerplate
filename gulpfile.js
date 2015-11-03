@@ -90,7 +90,10 @@ gulp.task('build-copy', ['clean'], function() {
     return gulp.src([
                     roots.dev + '**/*',
                     '!' + roots.dev + '{scss,scss/**}',
-                    '!' + roots.dev + '/img/**/*',
+                    '!' + roots.dev + '/img/**/*.png',
+                    '!' + roots.dev + '/img/**/*.gif',
+                    '!' + roots.dev + '/img/**/*.jpg',
+                    '!' + roots.dev + '/img/**/*.jpeg',
                     '!./**/*.map',
                     '!./**/*.es6'
                 ])
