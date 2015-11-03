@@ -21,7 +21,7 @@ var roots = {
 };
 
 var apiKeys = {
-    tinypng: 'Ygc_fAm-kjKoO126viO0QM9OxGKClEom'
+    tinypng: 'API-KEY-HERE'
 };
 
 gulp.task('connect', ['sass', 'babel'], function() {
