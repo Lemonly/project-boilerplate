@@ -2,6 +2,8 @@
 .sass-cache/
 .idea
 .idea/
+.gulp
+.gulp/
 node_modules
 node_modules/
 build
