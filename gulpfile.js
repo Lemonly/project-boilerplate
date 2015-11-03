@@ -13,7 +13,7 @@ var gulp            = require('gulp'),
     zip             = require('gulp-zip'),
     eslint          = require('gulp-eslint'),
     scsslint        = require('gulp-scss-lint'),
-    tinypng        = require('gulp-tinypng');
+    tinify         = require('gulp-tinify');
 
 var roots = {
     dev: './dev/',
@@ -54,15 +54,6 @@ gulp.task('sass', ['scsslint'], function() {
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest(roots.dev + 'css'));
 });
-
-/*gulp.task('autoprefixer', ['sass'], function() {
-    return gulp.src(roots.dev + 'css/!*.css')
-               .pipe(autoprefixer({
-                    browsers: ['last 2 versions', 'ie <= 9'],
-                    cascade: false
-               }))
-               .pipe(gulp.dest(roots.dev + 'css'));
-});*/
 
 gulp.task('css', function() {
     gulp.src(roots.dev + 'css/*.css')
@@ -106,11 +97,11 @@ gulp.task('build-copy', ['clean'], function() {
                .pipe(gulp.dest('build'));
 });
 
-gulp.task('tinypng', ['build-copy'], function() {
+gulp.task('tinify', function() {
     gulp.src(roots.dev + '/img/**/*')
-        .pipe(tinypng(apiKeys.tinypng))
+        .pipe(tinify(apiKeys.tinypng))
         .pipe(gulp.dest(roots.build + '/img'));
-})
+});
 
 gulp.task('minify-css', ['build-copy'], function() {
     return gulp.src(roots.build + 'css/styles.css')
@@ -135,7 +126,7 @@ gulp.task('html-replace', ['build-copy'], function() {
         .pipe(gulp.dest('build/'))
 });
 
-gulp.task('zip', ['html-replace', 'clean-unminified'], function() {
+gulp.task('zip', function() {
     return gulp.src('./{build,build/**}')
                .pipe(zip('build.' + dateHash() + '.zip'))
                .pipe(gulp.dest('./'));
@@ -157,7 +148,7 @@ gulp.task('scsslint', ['eslint'], function() {
 
 gulp.task('server', ['watch']);
 
-gulp.task('build', ['clean', 'build-copy', 'tinypng', 'minify-css', 'uglify', 'html-replace', 'clean-unminified', 'zip']);
+gulp.task('build', ['clean', 'build-copy', 'tinify', 'minify-css', 'uglify', 'html-replace', 'clean-unminified']);
 
 gulp.task('lint', ['eslint', 'scsslint']);
 
