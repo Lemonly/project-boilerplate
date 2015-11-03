@@ -1,5 +1,5 @@
 #Lemonly's Front-end Project Boilerplate
-#####v1.2.0
+#####v1.2.1
 
 ###Getting Started:
 1. Clone project
@@ -8,6 +8,7 @@
 4. Navigate to http://your.ip.address.here:8888 in any browser or on any device to test the project
 5. Edit variable values in dev/scss/_variables.scss to make quick changes to the site styling
 6. `gulp build` from the project root will put a production version of the project in /build
+7. `gulp zip` to compress it for delivery to the client
 
 ###Based on these projects:
 * [HTML5 Boilerplate](https://html5boilerplate.com/)
@@ -16,6 +17,9 @@
 * Lemonly HTML/CSS/JS Style Guides
 
 ###Changes:
+####1.2.1
+* Included PNG and JPEG optimization via TinyPNG's API
+
 ####1.2.0
 * Converted all grunt tasks to gulp tasks and removed grunt
 
