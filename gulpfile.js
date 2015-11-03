@@ -13,7 +13,7 @@ var gulp            = require('gulp'),
     zip             = require('gulp-zip'),
     eslint          = require('gulp-eslint'),
     scsslint        = require('gulp-scss-lint'),
-    tinify         = require('gulp-tinify');
+    tinify          = require('gulp-tinify');
 
 var roots = {
     dev: './dev/',
